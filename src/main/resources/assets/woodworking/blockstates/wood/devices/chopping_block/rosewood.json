@@ -11,13 +11,11 @@
     }
   },
   "variants": {
-    "normal": [
-      {}
-    ],
+    "normal": {
+      "model": "woodworking:devices/chopping_block_log"
+    },
     "log_placed": {
-      "true": {
-        "model": "woodworking:devices/chopping_block_log"
-      },
+      "true": {},
       "false": {
         "submodel": "woodworking:devices/chopping_block",
         "textures": {

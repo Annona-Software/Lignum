@@ -17,7 +17,6 @@ import com.annonasoftware.games.woodworking.objects.item.ItemSplitLog;
 import com.annonasoftware.games.woodworking.objects.te.TEChoppingBlock;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -40,14 +39,12 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import mcp.MethodsReturnNonnullByDefault;
+import net.dries007.tfc.Constants;
 import net.dries007.tfc.api.capability.size.IItemSize;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Tree;
-import net.dries007.tfc.client.TFCSounds;
-import net.dries007.tfc.objects.blocks.BlocksTFC;
 import net.dries007.tfc.objects.blocks.wood.BlockLogTFC;
-import net.dries007.tfc.objects.items.ItemsTFC;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.OreDictionaryHelper;
 
@@ -57,7 +54,7 @@ import static net.minecraft.block.material.Material.WOOD;
 @ParametersAreNonnullByDefault
 public class BlockChoppingBlock extends Block implements IItemSize
 {
-    public static final AxisAlignedBB SMALL_AABB = new AxisAlignedBB(0.1875, 0.8125, 0, 0.5, 0.1875, 0.8125);
+    public static final AxisAlignedBB SMALL_AABB = new AxisAlignedBB(0.125, 0, 0.125, 0.875, 0.5, 0.875);
     public static final PropertyBool LOG_PLACED = PropertyBool.create("log_placed");
 
     private static final Map<Tree, BlockChoppingBlock> MAP = new HashMap<>();
@@ -129,30 +126,40 @@ public class BlockChoppingBlock extends Block implements IItemSize
                         BlockLogTFC log = (BlockLogTFC)ib.getBlock();
                         Tree logWood = log.getWood();
 
-                        //..then either split it on axe hit
+                        //...then either split it on axe hit
                         final Set<String> toolClasses = stack.getItem().getToolClasses(stack);
                         if (toolClasses.contains("axe") && !toolClasses.contains("saw"))
-                        {
-                                        
+                        {        
                             worldIn.playSound(playerIn, pos, WoodworkingSounds.WOOD_LOG_SPLIT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                            worldIn.spawnParticle(EnumParticleTypes.BLOCK_DUST, (double)pos.getX(), (double)pos.getY()+1f, (double)pos.getZ(), 0.1D, 0.1D, 0.1D, Block.getStateId(state));
-                            Helpers.spawnItemStack(worldIn, pos.add(0.5d, 0.5d, 0.5d), new ItemStack(ItemSplitLog.get(logWood), 4));
+                            
+                            if(!worldIn.isRemote)
+                            {
+                                for(int i = 0; i < 6; i++)
+                                {
+                                    worldIn.spawnParticle(EnumParticleTypes.BLOCK_DUST,
+                                                            (double)pos.getX()+Constants.RNG.nextDouble(),
+                                                            (double)pos.getY()+1f,
+                                                            (double)pos.getZ()+Constants.RNG.nextDouble(),
+                                                            0.2D, 0.4D, 0.2D, Block.getStateId(state));
+                                }
+                            
+                                Helpers.spawnItemStack(worldIn, pos.add(0.5d, 0.5d, 0.5d), new ItemStack(ItemSplitLog.get(logWood), 4));
+                                te.setEmpty();
+                            }
                         }
 
                         //or remove it back to player's inventory
                         else
                         {
-                            ItemHandlerHelper.giveItemToPlayer(playerIn, contents);                    
+                            ItemHandlerHelper.giveItemToPlayer(playerIn, contents);
+                            te.setEmpty();                    
                         }
                     }
-                    
-                    
                     //TODO: if there's a log in place and player is using froe, split into shingles
 
                 }
             }
             
-            //either way, set back to default sans TE
             return worldIn.setBlockState(pos, this.getDefaultState(), worldIn.isRemote ? 11 : 3);
         }
 
@@ -189,22 +196,18 @@ public class BlockChoppingBlock extends Block implements IItemSize
         return new BlockStateContainer(this, LOG_PLACED);
     }
 
-
-    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullBlock(IBlockState state)
     {
         return false;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state)
     {
         return false;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state)
     {
@@ -213,7 +216,7 @@ public class BlockChoppingBlock extends Block implements IItemSize
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return state.getValue(LOG_PLACED) ? SMALL_AABB : FULL_BLOCK_AABB;
+        return state.getValue(LOG_PLACED) ? FULL_BLOCK_AABB : SMALL_AABB;
     }
 
     @Override

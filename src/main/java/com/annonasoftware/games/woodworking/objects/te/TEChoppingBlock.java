@@ -29,4 +29,9 @@ public class TEChoppingBlock extends TEInventory
     {
         inventory.setStackInSlot(0, stack);
     }
+
+    public void setEmpty()
+    {
+        inventory.setStackInSlot(0, ItemStack.EMPTY);
+    }
 }

@@ -696,8 +696,9 @@ for wood_type in WOOD_TYPES:
             ('particle', 'side'): 'tfc:blocks/wood/log/%s' % wood_type,
             'end': 'tfc:blocks/wood/top/%s' % wood_type,
             'up': 'woodworking:blocks/wood/devices/chopping_block'}, variants={
+                'normal': {'model' : 'woodworking:devices/chopping_block_log'},
                 'log_placed': {
-                    'true': {'model' : 'woodworking:devices/chopping_block_log'},
+                    'true': {},
                     'false': {'submodel' : 'woodworking:devices/chopping_block',
                         'textures' : {'particle': 'tfc:blocks/wood/log/%s' % wood_type }
                     }

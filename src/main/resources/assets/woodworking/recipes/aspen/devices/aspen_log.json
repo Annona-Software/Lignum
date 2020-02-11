@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "woodworking:wood/devices/chopping_block/aspen"
+    }
+  ],
+  "result": {
+    "item": "tfc:wood/log/aspen",
+    "count": 1
+  }
+}

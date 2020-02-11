@@ -81,8 +81,6 @@ tile.woodworking.wood.furniture.simple_stool.palm.name=Palm Stool
 
 ####ITEMS####
 #Split Logs
-item.woodworking.wood.split_log.kapok.name = 
-
 item.woodworking.wood.split_log.ash.name=Ash Split Log
 item.woodworking.wood.split_log.aspen.name=Aspen Split Log
 item.woodworking.wood.split_log.birch.name=Birch Split Log

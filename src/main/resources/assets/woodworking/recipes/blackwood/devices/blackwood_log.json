@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "woodworking:wood/devices/chopping_block/blackwood"
+    }
+  ],
+  "result": {
+    "item": "tfc:wood/log/blackwood",
+    "count": 1
+  }
+}

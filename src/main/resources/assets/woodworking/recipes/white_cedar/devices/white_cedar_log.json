@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "woodworking:wood/devices/chopping_block/white_cedar"
+    }
+  ],
+  "result": {
+    "item": "tfc:wood/log/white_cedar",
+    "count": 1
+  }
+}
