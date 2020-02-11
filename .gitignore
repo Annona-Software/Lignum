@@ -24,8 +24,9 @@ hs_err_pid*
 
 # Gradle
 .gradle
-/.gradle/*
-/build/
+\.gradle\
+build/
+\bin\
 
 # IntelliJ
 /out/

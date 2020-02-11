@@ -135,7 +135,7 @@ public class BlockChoppingBlock extends Block implements IItemSize
                         {
                                         
                             worldIn.playSound(playerIn, pos, WoodworkingSounds.WOOD_LOG_SPLIT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                            worldIn.spawnParticle(EnumParticleTypes.BLOCK_DUST, (double)pos.getX(), (double)pos.getY()+1f, (double)pos.getZ(), 0.5D, 0.5D, 0.5D, Block.getStateId(state));
+                            worldIn.spawnParticle(EnumParticleTypes.BLOCK_DUST, (double)pos.getX(), (double)pos.getY()+1f, (double)pos.getZ(), 0.1D, 0.1D, 0.1D, Block.getStateId(state));
                             Helpers.spawnItemStack(worldIn, pos.add(0.5d, 0.5d, 0.5d), new ItemStack(ItemSplitLog.get(logWood), 4));
                         }
 

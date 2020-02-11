@@ -14,6 +14,8 @@ item.waterflasks.iron_flask.name=Empty Iron Flask
 item.waterflasks.unfinished_iron_flask.name=Unfinished Iron Flask
 item.waterflasks.broken_iron_flask.name=Broken Iron Flask
 
+
+####BLOCKS####
 #Chopping Blocks
 tile.woodworking.wood.devices.chopping_block.ash.name=Ash Chopping Block
 tile.woodworking.wood.devices.chopping_block.aspen.name=Aspen Chopping Block
@@ -76,3 +78,27 @@ tile.woodworking.wood.furniture.simple_stool.acacia.name=Acacia Stool
 tile.woodworking.wood.furniture.simple_stool.rosewood.name=Rosewood Stool
 tile.woodworking.wood.furniture.simple_stool.blackwood.name=Blackwood Stool
 tile.woodworking.wood.furniture.simple_stool.palm.name=Palm Stool
+
+####ITEMS####
+#Split Logs
+item.woodworking.wood.split_log.kapok.name = 
+
+item.woodworking.wood.split_log.ash.name=Ash Split Log
+item.woodworking.wood.split_log.aspen.name=Aspen Split Log
+item.woodworking.wood.split_log.birch.name=Birch Split Log
+item.woodworking.wood.split_log.chestnut.name=Chestnut Split Log
+item.woodworking.wood.split_log.douglas_fir.name=Douglas Fir Split Log
+item.woodworking.wood.split_log.hickory.name=Hickory Split Log
+item.woodworking.wood.split_log.maple.name=Maple Split Log
+item.woodworking.wood.split_log.oak.name=Oak Split Log
+item.woodworking.wood.split_log.pine.name=Pine Split Log
+item.woodworking.wood.split_log.sequoia.name=Sequoia Split Log
+item.woodworking.wood.split_log.spruce.name=Spruce Split Log
+item.woodworking.wood.split_log.sycamore.name=Sycamore Split Log
+item.woodworking.wood.split_log.white_cedar.name=White Cedar Split Log
+item.woodworking.wood.split_log.willow.name=Willow Split Log
+item.woodworking.wood.split_log.kapok.name=Kapok Split Log
+item.woodworking.wood.split_log.acacia.name=Acacia Split Log
+item.woodworking.wood.split_log.rosewood.name=Rosewood Split Log
+item.woodworking.wood.split_log.blackwood.name=Blackwood Split Log
+item.woodworking.wood.split_log.palm.name=Palm Split Log
