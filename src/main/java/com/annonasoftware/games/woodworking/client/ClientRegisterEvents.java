@@ -9,10 +9,11 @@ package com.annonasoftware.games.woodworking.client;
     the bulk of this class. EUPL <-> GPL.
 */
 
-
 import com.annonasoftware.games.woodworking.objects.block.BlocksWoodworking;
+import com.annonasoftware.games.woodworking.objects.item.ItemsWoodworking;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -36,6 +37,10 @@ public final class ClientRegisterEvents
         // Item Blocks
         for (ItemBlock item : BlocksWoodworking.getAllNormalItemBlocks())
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "normal"));
+
+        // Simple Items
+        for (Item item : ItemsWoodworking.getAllSimpleItems())
+            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString()));
     }
 
 }

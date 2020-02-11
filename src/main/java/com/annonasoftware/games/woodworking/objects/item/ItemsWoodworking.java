@@ -33,6 +33,13 @@ public class ItemsWoodworking {
     public static ItemBase brokenIronFlask = new ItemBase("broken_iron_flask").setCreativeTab(CT_METAL);
     public static ItemIronFlask ironFlask = new ItemIronFlask();
 
+    private static ImmutableList<Item> allSimpleItems;
+
+    public static ImmutableList<Item> getAllSimpleItems()
+    {
+        return allSimpleItems;
+    }
+
     @SubscribeEvent
     public static void register(RegistryEvent.Register<Item> event)
     {
@@ -58,6 +65,8 @@ public class ItemsWoodworking {
         {
             simpleItems.add(register(r, "wood/split_log/" + wood.getRegistryName().getPath(), new ItemSplitLog(wood), CT_WOOD));
         }
+
+        allSimpleItems = simpleItems.build();
     }
 
     public static void registerModels() {
