@@ -1,0 +1,10 @@
+{
+  "wood.log.split": {
+    "category": "ambient",
+	"subtitle": "woodworking.log.split",
+	"sounds": [
+	  "woodworking:logsplit1",
+	  "woodworking:logsplit2"
+	]
+  }
+}

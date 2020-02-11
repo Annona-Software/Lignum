@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tfc:wood/log/sequoia"
+    }
+  ],
+  "result": {
+    "item": "woodworking:wood/devices/chopping_block/sequoia",
+    "count": 1
+  }
+}

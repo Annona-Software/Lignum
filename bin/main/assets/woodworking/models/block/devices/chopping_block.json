@@ -1,0 +1,25 @@
+{
+	"credit": "Designed by madflavius with Blockbench",
+	"parent": "block/block",
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 8, 14],
+			"color": 5,
+			"faces": {
+				"north": {"uv": [0, 0, 12, 8], "texture": "#side"},
+				"east": {"uv": [0, 0, 12, 8], "texture": "#side"},
+				"south": {"uv": [0, 0, 12, 8], "texture": "#side"},
+				"west": {"uv": [0, 0, 12, 8], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#end"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#end"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [68, 0, 0],
+			"translation": [-5.5, -12, -1]
+		}
+	}
+}

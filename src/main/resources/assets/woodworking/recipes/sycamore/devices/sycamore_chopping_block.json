@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tfc:wood/log/sycamore"
+    }
+  ],
+  "result": {
+    "item": "woodworking:wood/devices/chopping_block/sycamore",
+    "count": 1
+  }
+}

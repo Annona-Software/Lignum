@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "woodworking",
+    "name": "Woodworking",
+    "description": "A wood-focused add-on for TerraFirmaCraft 1.12.2",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "logoFile": "/assets/tfc/textures/gui/logo.png",
+    "url": "https://terrafirmacraft.github.io",
+    "updateJson": "https://mc.dries007.net/terrafirmacraft.json",
+    "authorList": [
+      "madflavius"
+    ],
+    "credits": "The TerraFirmaCraft team for the wonderful mod that Woodworking is designed to embellish."
+  }
+]
