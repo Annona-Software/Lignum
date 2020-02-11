@@ -49,3 +49,6 @@ venv/
 *.rangemap
 *.lock
 *.bin
+*.rangemap
+*.bin
+*.rangemap
