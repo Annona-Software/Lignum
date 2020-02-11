@@ -39,5 +39,3 @@ public class WoodworkingSounds
         return new SoundEvent(soundID).setRegistryName(soundID);
     }
 }
-
-}
