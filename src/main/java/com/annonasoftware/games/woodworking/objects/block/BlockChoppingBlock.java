@@ -92,6 +92,7 @@ public class BlockChoppingBlock extends Block implements IItemSize
             //only works if there's room on the block and room to swing
             if(worldIn.getBlockState(pos.up(2)).getBlock().equals(Blocks.AIR) && worldIn.getBlockState(pos.up()).getBlock().equals(Blocks.AIR))
             {
+                //just to double check there's not some weird log item
                 if(stack.getItem() instanceof ItemBlock);
                 {
                     worldIn.setBlockState(pos, this.getDefaultState().withProperty(LOG_PLACED, true), worldIn.isRemote ? 11 : 3);
@@ -99,7 +100,11 @@ public class BlockChoppingBlock extends Block implements IItemSize
                     TEChoppingBlock te = Helpers.getTE(worldIn, pos, TEChoppingBlock.class);
                     if(te != null)
                     {
-                        te.setLog(stack);
+                        //all this jazz so we only grab one log
+                        ItemBlock ib = (ItemBlock)stack.getItem();
+                        BlockLogTFC logWood = (BlockLogTFC)ib.getBlock();
+                        ItemStack newStack = new ItemStack(logWood, 1);
+                        te.setLog(newStack);
                     }
                     stack.splitStack(1);
                     return true;
@@ -142,9 +147,7 @@ public class BlockChoppingBlock extends Block implements IItemSize
                                                             (double)pos.getZ()+Constants.RNG.nextDouble(),
                                                             0.2D, 0.4D, 0.2D, Block.getStateId(state));
                                 }
-                            
                                 Helpers.spawnItemStack(worldIn, pos.add(0.5d, 0.5d, 0.5d), new ItemStack(ItemSplitLog.get(logWood), 4));
-                                te.setEmpty();
                             }
                         }
 
@@ -152,7 +155,6 @@ public class BlockChoppingBlock extends Block implements IItemSize
                         else
                         {
                             ItemHandlerHelper.giveItemToPlayer(playerIn, contents);
-                            te.setEmpty();                    
                         }
                     }
                     //TODO: if there's a log in place and player is using froe, split into shingles

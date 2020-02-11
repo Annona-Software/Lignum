@@ -12,16 +12,13 @@
   },
   "variants": {
     "normal": {
-      "model": "woodworking:devices/chopping_block_log"
+      "model": "woodworking:devices/chopping_block"
     },
     "log_placed": {
-      "true": {},
-      "false": {
-        "submodel": "woodworking:devices/chopping_block",
-        "textures": {
-          "particle": "tfc:blocks/wood/log/chestnut"
-        }
-      }
+      "true": {
+        "submodel": "woodworking:devices/chopping_block/chopping_block_log"
+      },
+      "false": {}
     }
   }
 }
