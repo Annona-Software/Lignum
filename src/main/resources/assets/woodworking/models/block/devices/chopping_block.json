@@ -14,6 +14,15 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#end"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#end"}
 			}
+		},
+	
+		{
+			"from": [2, 0, 2],
+			"to": [14, 8, 14],
+			"color": 5,
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#overlay"}
+			}
 		}
 	],
 	"display": {

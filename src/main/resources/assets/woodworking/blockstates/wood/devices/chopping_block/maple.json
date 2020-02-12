@@ -7,7 +7,7 @@
       "particle": "tfc:blocks/wood/log/maple",
       "side": "tfc:blocks/wood/log/maple",
       "end": "tfc:blocks/wood/top/maple",
-      "up": "woodworking:blocks/wood/devices/chopping_block"
+      "overlay": "woodworking:blocks/wood/devices/chopping_block"
     }
   },
   "variants": {
@@ -16,7 +16,7 @@
     },
     "log_placed": {
       "true": {
-        "submodel": "woodworking:devices/chopping_block/chopping_block_log"
+        "submodel": "woodworking:devices/chopping_block_log"
       },
       "false": {}
     }

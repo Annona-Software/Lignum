@@ -695,10 +695,11 @@ for wood_type in WOOD_TYPES:
     blockstate(('wood/devices/', 'chopping_block', wood_type), 'woodworking:devices/chopping_block', textures={
             ('particle', 'side'): 'tfc:blocks/wood/log/%s' % wood_type,
             'end': 'tfc:blocks/wood/top/%s' % wood_type,
-            'up': 'woodworking:blocks/wood/devices/chopping_block'}, variants={
+            'overlay': 'woodworking:blocks/wood/devices/chopping_block'}, variants={
                 'normal': {'model' : 'woodworking:devices/chopping_block'},
                 'log_placed': {
-                    'true': {'submodel' : 'woodworking:devices/chopping_block/chopping_block_log'},
+                    'true': {'submodel' : 'woodworking:devices/chopping_block_log',
+                    },
                     'false': {}
                 } 
             })
