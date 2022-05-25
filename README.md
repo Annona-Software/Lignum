@@ -1,7 +1,7 @@
 # Woodworking
 ## A TFC Add-On by Annona Software.
 
-For Minecraft 1.12.2 + TerraFirmaCraft TNG.
+For Minecraft 1.18.2 + TerraFirmaCraft TNG.
 
 ** Important Note: Will not work without TerraFirmaCraft TNG. **
 
