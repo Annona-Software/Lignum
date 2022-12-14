@@ -5,6 +5,8 @@ import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
+import net.dries007.tfc.common.blocks.wood.Wood;
+import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,10 +24,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static net.dries007.tfc.common.TFCItemGroup.DECORATIONS;
+import static net.dries007.tfc.common.TFCItemGroup.WOOD;
 
 @SuppressWarnings("unused")
 public class LignumBlocks {
@@ -41,7 +45,7 @@ public class LignumBlocks {
                     .blockEntity(FLBlockEntities.OVEN_BOTTOM)
                     .serverTicks(OvenBottomBlockEntity::serverTick), null), DECORATIONS); */
 
-
+    public static final RegistryObject<Block> WATTLE_FENCE = register("wattle", () -> new WattleFenceBlock(ExtendedProperties.of(Material.WOOD).strength(0.3F).noOcclusion().sound(SoundType.SCAFFOLDING).flammable(60, 30)), DECORATIONS);
 
     public static int lightEmission(BlockState state)
     {

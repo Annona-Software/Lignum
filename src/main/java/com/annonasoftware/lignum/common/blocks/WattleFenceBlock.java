@@ -85,7 +85,7 @@ public class WattleFenceBlock extends TFCFenceBlock implements IForgeBlockExtens
             return lookState.setValue(WOVEN, true);
         }
 
-        return super.getStateToDraw(level, player, lookState, direction, lookPos, x, y, z, item);
+        return getStateToDraw(level, player, lookState, direction, lookPos, x, y, z, item);
     }
 
     @Nullable

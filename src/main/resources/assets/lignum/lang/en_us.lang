@@ -16,6 +16,8 @@
 
 
 ####BLOCKS####
+"block.lignum.wattle_fence": "Wattle Fence"
+
 #Chopping Blocks
 #tile.woodworking.wood.devices.chopping_block.ash.name=Ash Chopping Block
 #tile.woodworking.wood.devices.chopping_block.aspen.name=Aspen Chopping Block
@@ -100,5 +102,3 @@
 #item.woodworking.wood.split_log.rosewood.name=Rosewood Split Log
 #item.woodworking.wood.split_log.blackwood.name=Blackwood Split Log
 #item.woodworking.wood.split_log.palm.name=Palm Split Log
-
-"item.lignum.smile": "Smiley Face"
