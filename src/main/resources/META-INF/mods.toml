@@ -1,0 +1,31 @@
+modLoader="javafml" #mandatory
+loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="MIT"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+[[mods]] #mandatory
+modId="lignum" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Lignum" #mandatory
+#logoFile="firmalife.png" #optional
+authors="madflavius, timbrelaine64" #optional
+description='''
+An addon for TFC.
+'''
+[[dependencies.lignum]]
+modId="tfc"
+mandatory=true
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.lignum]]
+modId="forge"
+mandatory=true
+versionRange="[40,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.lignum]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18.2,1.19)"
+ordering="AFTER"
+side="BOTH"

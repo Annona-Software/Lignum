@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "woodworking:wood/devices/chopping_block/douglas_fir"
+    }
+  ],
+  "result": {
+    "item": "tfc:wood/log/douglas_fir",
+    "count": 1
+  }
+}
