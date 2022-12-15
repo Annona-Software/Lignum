@@ -24,11 +24,5 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#overlay"}
 			}
 		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [68, 0, 0],
-			"translation": [-5.5, -12, -1]
-		}
-	}
+	]
 }
