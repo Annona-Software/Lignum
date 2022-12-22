@@ -1,10 +1,9 @@
 {
-  "wood.log.split": {
-    "category": "ambient",
-	"subtitle": "woodworking.log.split",
+  "block.wood.log.split": {
+	"subtitle": "subtitles.block.lignum.chopping_block.split",
 	"sounds": [
-	  "woodworking:logsplit1",
-	  "woodworking:logsplit2"
+	  "lignum:block/chopping_block/logsplit1",
+	  "lignum:block/chopping_block/logsplit2"
 	]
   }
 }

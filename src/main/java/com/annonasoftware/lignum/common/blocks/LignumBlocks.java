@@ -37,7 +37,7 @@ public class LignumBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, com.annonasoftware.lignum.Lignum.MOD_ID);
 
 
-    public static final RegistryObject<Block> WATTLE_FENCE = register("wattle_fence", () -> new WattleFenceBlock(ExtendedProperties.of(Material.WOOD).strength(0.3F).noOcclusion().sound(SoundType.SCAFFOLDING).flammable(60, 30)), WOOD);
+    //public static final RegistryObject<Block> WATTLE_FENCE = register("wattle_fence", () -> new WattleFenceBlock(ExtendedProperties.of(Material.WOOD).strength(0.3F).noOcclusion().sound(SoundType.SCAFFOLDING).flammable(60, 30)), WOOD);
 
     //DEVICES
     public static final Map<Wood, RegistryObject<Block>> CHOPPING_BLOCKS = Helpers.mapOfKeys(Wood.class, wood -> register("wood/chopping_block/" + wood.getSerializedName(), () -> new ChoppingBlock(choppingBlockProperties()), WOOD));

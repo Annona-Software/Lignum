@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "lignum:block/chopping_block",
   "textures": {
-    "side": "tfc:block/wood/log/oak",
-    "end": "tfc:block/wood/log_top/oak",
+    "side": "tfc:block/wood/log/rosewood",
+    "end": "tfc:block/wood/log_top/rosewood",
 	"overlay": "lignum:block/chopping_block"
   }
 }
