@@ -17,35 +17,36 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 import java.util.Random;
 
 public class ChoppingBlockEntity extends InventoryBlockEntity<ItemStackHandler>
 {
     private static final int SLOT = 0;
-    private static final Direction [] DIRECTIONS = new Direction[]{Direction.NORTH,Direction.SOUTH,Direction.EAST,Direction.WEST};
 
-    public ChoppingBlockEntity(BlockPos pos, BlockState state) {
-        this(LignumBlockEntities.CHOPPING_BLOCK.get(), pos, state);
-    }
-
-    public ChoppingBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state, defaultInventory(1), LignumHelpers.blockEntityName("chopping_block"));
+    public ChoppingBlockEntity(BlockPos pos, BlockState state)
+    {
+        super(LignumBlockEntities.CHOPPING_BLOCK.get(), pos, state, defaultInventory(1), LignumHelpers.blockEntityName("chopping_block"));
     }
 
     public InteractionResult onRightClick(Player player)
     {
+
         assert level != null;
         final ItemStack heldItem = player.getMainHandItem();
-        final boolean inventoryFilled = !inventory.getStackInSlot(1).isEmpty();
-        final boolean shouldInsert = !heldItem.isEmpty() && isItemValid(heldItem);
+        final boolean inventoryFilled = !inventory.getStackInSlot(SLOT).isEmpty();
+        final boolean shouldInsert = !heldItem.isEmpty() && isItemValid(SLOT, heldItem);
 
         if (inventoryFilled)
         {
@@ -55,6 +56,7 @@ public class ChoppingBlockEntity extends InventoryBlockEntity<ItemStackHandler>
                 ItemHandlerHelper.giveItemToPlayer(player, inventory.extractItem(SLOT, 1, false),
                         player.getInventory().selected);
                 markForBlockUpdate();
+                updateState();
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 
@@ -65,57 +67,46 @@ public class ChoppingBlockEntity extends InventoryBlockEntity<ItemStackHandler>
                 BlockPos entityPos = this.getBlockPos();
                 Helpers.playSound(level, this.getBlockPos(), LignumSounds.LOG_SPLIT.get());
 
-                //remove the log item and get its key
-                TFCBlocks.WOODS.getOrDefault()
-
                 ItemStack logItem = inventory.extractItem(SLOT, 1, false);
 
-                ItemStack splitItem = LignumItems.SPLIT_LOGS.get(Wood.ACACIA).get();
+                //ItemStack splitItem = new ItemStack(LignumItems.SPLIT_LOGS.get(Wood.ACACIA).get());
 
-                //spawn four split logs, scattered in the cardinal directions between 0 and 2 blocks away
+                ItemStack splitItem = new ItemStack(LignumItems.SPLIT_LOGS.get(logItem.))
+                //ItemStack splitItem = LignumItems.SPLIT_LOGS.get(TFCBlocks.WOODS.get(logItem));
+
+                //for(Map.Entry<Wood, Map<Wood.BlockType, RegistryObject<Block>>> w : TFCBlocks.WOODS.entrySet())
+                //{
+                //    if(w.getKey().equals(logItem.))
+                //}
+                //Helpers.DIRECTIONS.
+
+                //TFCBlocks.WOODS.forEach((wood, map) -> ;
+                //        Wood (blocktype, registryobject Block)
+                //)
+                //spawn four split logs, scattered in the cardinal directions between 0 and 3 blocks away
                 for (int i = 0; i < 4; i++)
                 {
-
-                    Helpers.spawnItem(level, entityPos.relative(DIRECTIONS[i], rand.nextInt(3)), splitItem);
+                    Helpers.spawnItem(level, entityPos.relative(Helpers.DIRECTIONS[i], rand.nextInt(3)), splitItem);
                 }
 
-
-
-            }
-
-        }
-
-        else //chopping block empty
-        {
-            if(shouldInsert)
-            {
-                insertLog(heldItem.split(1));
-                markForBlockUpdate();
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
 
-        if (!held.isEmpty() && Helpers.isItem(held, TFCTags.Items.LOG_PILE_LOGS))
+        if(!inventoryFilled) //chopping block empty
         {
-            level.getBlockEntity(pos, LignumBlockEntities.CHOPPING_BLOCK.get()).ifPresent(choppingBlock -> {
-                boolean isFull = choppingBlock.isInventoryFull();
-                if(!isFull)
-                {
-                    choppingBlock.insertLog(held);
-                    held.shrink(1);
-                }
-                choppingBlock.updateState();
-            });
-            res = InteractionResult.sidedSuccess(level.isClientSide);
+            if(shouldInsert) //holding a log
+            {
+                inventory.insertItem(SLOT, heldItem.split(1), false);
+                markForBlockUpdate();
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
-
-
-
         return InteractionResult.PASS;
     }
 
     @Override
-    public boolean isItemValid(ItemStack stack)
+    public boolean isItemValid(int slot, ItemStack stack)
     {
         return Helpers.isItem(stack, TFCTags.Items.LOG_PILE_LOGS);
     }
@@ -125,26 +116,14 @@ public class ChoppingBlockEntity extends InventoryBlockEntity<ItemStackHandler>
         return Helpers.isItem(item, TFCTags.Items.AXES_THAT_LOG);
     }
 
-    //Determines whether the held item is a log.
-    public boolean isInventoryFull() {
-        final ItemStack current = inventory.getStackInSlot(inventory.getSlots());
-        if (current.isEmpty()) return false;
-        else return true;
+    @Override
+    public int getSlotStackLimit(int slot)
+    {
+        return 1;
     }
 
-    public void insertLog(ItemStack item) {
-        inventory.insertItem(1, item, false);
-    }
-
-    public ItemStack removeLog() {
-        final ItemStack current = inventory.getStackInSlot(0);
-        if (!current.isEmpty()) {
-            markForSync();
-            return inventory.extractItem(1, Integer.MAX_VALUE, false);
-        } else return ItemStack.EMPTY;
-    }
-
-    public void updateState() {
+    public void updateState()
+    {
         assert level != null;
         boolean hasLog = hasLog();
         BlockState state = level.getBlockState(worldPosition);
@@ -155,7 +134,7 @@ public class ChoppingBlockEntity extends InventoryBlockEntity<ItemStackHandler>
     }
 
     private boolean hasLog() {
-        if (inventory.getStackInSlot(0).isEmpty()) return false;
+        if (inventory.getStackInSlot(SLOT).isEmpty()) return false;
         else return true;
     }
 }

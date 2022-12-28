@@ -20,6 +20,7 @@ package com.annonasoftware.lignum;
     along with Lignum.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import com.annonasoftware.lignum.client.LignumSounds;
 import com.annonasoftware.lignum.common.blockentities.LignumBlockEntities;
 import com.annonasoftware.lignum.common.blocks.LignumBlocks;
 import com.annonasoftware.lignum.common.items.LignumItems;
@@ -50,6 +51,7 @@ public class Lignum {
         LignumItems.ITEMS.register(bus);
         LignumBlocks.BLOCKS.register(bus);
         LignumBlockEntities.BLOCK_ENTITIES.register(bus);
+        LignumSounds.SOUNDS.register(bus);
         //LignumRecipeTypes.RECIPE_TYPES.register(bus);
         //LignumRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
 

@@ -1,9 +1,9 @@
 {
-  "block.wood.log.split": {
+  "block.chopping_block.split": {
 	"subtitle": "subtitles.block.lignum.chopping_block.split",
 	"sounds": [
-	  "lignum:block/chopping_block/logsplit1",
-	  "lignum:block/chopping_block/logsplit2"
+	  "lignum:block/chopping_block/split1",
+	  "lignum:block/chopping_block/split2"
 	]
   }
 }
